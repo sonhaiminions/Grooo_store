@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin;
+use App\App;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller {
+class AppController extends Controller {
 
-	public function showAdmin() {
-		return response()->json(Admin::all());
+	public function showApp() {
+		return response()->json(App::all());
 	}
 
-	public function showOneAdmin($id) {
-		return response()->json(Admin::find($id));
+	public function showOneApp($id) {
+		return response()->json(App::find($id));
 	}
 
 	public function create(Request $request) {
@@ -21,24 +21,26 @@ class AdminController extends Controller {
 		// dd($request->file['avatar']);
 		$this->validate($request,
 			[
-				'username' => 'required |
+				'name' => 'required |
 				min:4|max:100|unique:admin',
-				'password' => 'required |
-				min:4|max:100',
-				'avatar' => 'mimes:jpeg,png',
-
+				// 'icon' => 'required ',
+				'describ' => 'required '
+				'hdh' => 'required ',
+				'publisher' => 'required',
+				'admin_id' => 'required',
+				'status' => 'required '
 			],
 			[
-				'username.required' => 'can nhap tai khoan!',
-				'username.unique' => 'tai khoan da ton tai',
+				'name.required' => 'can nhap ten app!',
+				'name.unique' => 'ten app da ton tai',
 
-				'password.min' => 'mật khẩu tối thiểu là 4 ký tự',
-				'password.max' => 'toi da 100 ky tu',
+				'name.min' => 'ten app qua ngan ',
+				'name.max' => 'teb app qua dai',
 			]);
-		if (isset($data['avatar'])) {
-			$file = $data['avatar'];
+		if (isset($data['icon'])) {
+			$file = $data['icon'];
 			$a = str_random(10) . '.' . $file->getClientOriginalExtension();
-			$file->move('img', $a);
+			$file->move('icon', $a);
 			$data['avatar'] = $a;
 
 		} else {

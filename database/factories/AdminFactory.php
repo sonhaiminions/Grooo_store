@@ -21,7 +21,7 @@ $factory->define(App\Admin::class, function (Faker $faker) {
 		'email' => 'nvhai001@gmail.com',
 		'phone' => 12341234,
 		'api_token' => str_random(10),
-		// 'role' => 2,
+		'avatar' => 'sonhai.jpg',
 		'status' => 1,
 
 	];

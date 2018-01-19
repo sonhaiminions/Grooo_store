@@ -21,7 +21,7 @@ class Version extends Migration {
 			$table->integer('permission');
 			$table->integer('admin_id')->unsigned();
 			$table->foreign('admin_id')->references('id')->on('admin');
-//
+			$table->integer('status');
 			$table->timestamps();
 		});
 	}

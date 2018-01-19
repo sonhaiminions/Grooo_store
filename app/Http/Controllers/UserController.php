@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin;
+use App\User;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller {
+class UserController extends Controller {
 
-	public function showAdmin() {
-		return response()->json(Admin::all());
+	public function showUser() {
+		return response()->json(User::all());
 	}
 
-	public function showOneAdmin($id) {
-		return response()->json(Admin::find($id));
+	public function showOneUser($id) {
+		return response()->json(User::find($id));
 	}
 
 	public function create(Request $request) {
 		// $admin = Admin::create($request->all());
 		$data = $request->all();
-		// dd($request->file['avatar']);
+		// dd($request->all());
 		$this->validate($request,
 			[
 				'username' => 'required |
-				min:4|max:100|unique:admin',
+				min:4|max:100|unique:user',
 				'password' => 'required |
 				min:4|max:100',
 				'avatar' => 'mimes:jpeg,png',
@@ -49,17 +49,17 @@ class AdminController extends Controller {
 
 		// dd($data);
 
-		$admin = Admin::create($data);
-		dd($admin);
-		return response()->json($admin, 201);
+		$user = User::create($data);
+		// dd($user);
+		return response()->json($user, 201);
 	}
 
 	public function update(Request $request, $id) {
-		$admin = Admin::findOrFail($id);
+		$user = User::findOrFail($id);
 		$data = $request->all();
 		// dd();if ($admin->username == $data['username']) {
 		$check = 'required |min:4|max:100';
-		if (isset($data['username']) && $admin->username != $data['username']) {
+		if (isset($data['username']) && $user->username != $data['username']) {
 			$check = 'required |min:4|max:100|unique:admin';
 		}
 		$this->validate($request,
@@ -88,20 +88,20 @@ class AdminController extends Controller {
 			$file->move('img', $a);
 			$data['avatar'] = $a;
 		} else {
-			$data['avatar'] = $admin->avatar;
+			$data['avatar'] = $user->avatar;
 		}
 
-		// $data['password'] = isset($data['password']) ? md5($data['password']) : '';
 		if (isset($data['password'])) {
 			$data['password'] = md5($data['password']);
 		}
-		$admin->update($data);
+		// dd($user);
+		$user->update($data);
 
-		return response()->json($admin, 200);
+		return response()->json($user, 200);
 	}
 
 	public function delete($id) {
-		Admin::findOrFail($id)->delete();
+		User::findOrFail($id)->delete();
 		return response('Deleted Successfully', 200);
 	}
 }
