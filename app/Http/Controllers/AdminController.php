@@ -50,7 +50,7 @@ class AdminController extends Controller {
 		// dd($data);
 
 		$admin = Admin::create($data);
-		dd($admin);
+		// dd($admin);
 		return response()->json($admin, 201);
 	}
 
