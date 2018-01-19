@@ -1,0 +1,22 @@
+<h3>List Apps</h3>
+<div id="wapper">
+  <div *ngFor="let app of apps" class="col-xs-12 col-md-4 app-l">
+    <a name="" routerLink="{{app.name}}" class="col-md-5">
+      <img src="../assets/public/img/chrome.png" alt="" width="100%" height="150px">
+    </a>
+    <div class="a">
+      <div class="col-md-7 col-xs-12">
+        <h4 class="name-app">
+          <b>Name:</b> {{app.name}}</h4>
+        <p>
+          <b>Version:</b> {{app.phienban}}</p>
+        <p>
+          <b>Update at:</b> {{app.updated_at | date}}</p>
+        <p>
+          <b>Expired at:</b> {{app.expired_date | date}}</p>
+        <p>
+          <b>HDH:</b> {{app.nentang}}</p>
+      </div>
+    </div>
+  </div>
+</div>

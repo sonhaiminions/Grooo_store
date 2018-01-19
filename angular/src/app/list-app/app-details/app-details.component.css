@@ -1,0 +1,25 @@
+
+.info-app{
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+}
+.info-detail{
+	padding-left: 20px;
+}
+.button-link ul{
+	background: #e8e8e8;
+	list-style: none;
+	border: 1px solid #e8e8e8;
+	border-radius: 8px;
+	text-align: center;
+}
+.button-link ul li{
+	display: inline-block;
+	border-right:1px solid black;
+	padding: 5px 15px;
+}
+
+h5{
+	color:#3789E5;
+}
