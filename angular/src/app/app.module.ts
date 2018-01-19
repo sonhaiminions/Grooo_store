@@ -1,29 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { approuting } from './app.routing';
+import { RouterModule } from '@angular/router';
 
-import { ListAppService } from './core/api/list-app-json.service';
+import { AppRoutingModule } from './app.routing';
+import { NavbarModule } from './shared/navbar/navbar.module';
+import { FooterModule } from './shared/footer/footer.module';
+import { SidebarModule } from './sidebar/sidebar.module';
+import { LbdModule } from './lbd/lbd.module';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ForgotComponent } from './forgot/forgot.component';
 
+import { HomeComponent } from './home/home.component';
+import { UserComponent } from './user/user.component';
+import { TablesComponent } from './tables/tables.component';
+import { TypographyComponent } from './typography/typography.component';
+import { IconsComponent } from './icons/icons.component';
+import { MapsComponent } from './maps/maps.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { UpgradeComponent } from './upgrade/upgrade.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ForgotComponent
+    HomeComponent,
+    UserComponent,
+    TablesComponent,
+    TypographyComponent,
+    IconsComponent,
+    MapsComponent,
+    NotificationsComponent,
+    UpgradeComponent,
+    UserProfileComponent
+
   ],
   imports: [
-    HttpModule,
     BrowserModule,
-    approuting,
+    FormsModule,
+    HttpModule,
+    NavbarModule,
+    FooterModule,
+    SidebarModule,
+    RouterModule,
+    AppRoutingModule,
+    LbdModule
   ],
-  providers:
-    [ListAppService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
